@@ -6,10 +6,9 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    CodeEditor editor;
-    editor.show();
+    CodeEditor *editor = new CodeEditor();
 
-    MainWindow w(&editor);
+    MainWindow w(editor);
     w.show();
 
     return a.exec();
