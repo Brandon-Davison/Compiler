@@ -120,8 +120,7 @@ void Simpletron::branchZero()
 /* Terminate program then perform a memory dump. */
 void Simpletron::halt()
 {
-    printRegisters();
-    printMemory();
+
 }
 
 /* load proram into memory */
