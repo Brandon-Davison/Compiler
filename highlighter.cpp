@@ -8,9 +8,9 @@ Highlighter::Highlighter(QTextDocument *parent)
     keywordFormat.setForeground(Qt::green);
     keywordFormat.setFontWeight(QFont::Bold);
     QStringList keywordPatterns;
-    keywordPatterns << "\\brem\\b" << "\\binput\\b" << "\\blet\\b"
+    keywordPatterns << "\\binput\\b" << "\\blet\\b"
                     << "\\blet\\b" << "\\bprint\\b" << "\\bgoto\\b"
-                    << "\\bif\\b";
+                    << "\\bif\\b" << "\\bend\\b";
 
     foreach (const QString &pattern, keywordPatterns) {
         rule.pattern = QRegularExpression(pattern);
@@ -19,7 +19,7 @@ Highlighter::Highlighter(QTextDocument *parent)
     }
 
     singleLineCommentFormat.setForeground(Qt::red);
-    rule.pattern = QRegularExpression("#");
+    rule.pattern = QRegularExpression("rem");
     rule.format = singleLineCommentFormat;
     highlightingRules.append(rule);
 }
