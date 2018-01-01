@@ -9,7 +9,10 @@ MainWindow::MainWindow(CodeEditor *codeEditor, QWidget *parent) :
 
     ui->setupUi(this);
 
-    CodeEditor *a = new CodeEditor();
+   CodeEditor *a = new CodeEditor();
+
+    highlighter = new Highlighter(a->document());
+
     setCentralWidget(a);
 
     /* Dark window theme */

@@ -28,13 +28,15 @@ SOURCES += \
         mainwindow.cpp \
     simpletron.cpp \
     compiler.cpp \
-    codeeditor.cpp
+    codeeditor.cpp \
+    highlighter.cpp
 
 HEADERS += \
         mainwindow.h \
     simpletron.h \
     compiler.h \
-    codeeditor.h
+    codeeditor.h \
+    highlighter.h
 
 FORMS += \
         mainwindow.ui
