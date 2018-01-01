@@ -13,7 +13,16 @@ MainWindow::MainWindow(CodeEditor *codeEditor, QWidget *parent) :
 
     highlighter = new Highlighter(a->document());
 
-    setCentralWidget(a);
+    QHBoxLayout* layout = new QHBoxLayout();
+    layout->addWidget(a);
+
+    QWidget* window = new QWidget;
+    window->setLayout(layout);
+    window->show();
+
+    ui->verticalLayout->addWidget(window);
+
+    //setCentralWidget(a);
 
     /* Dark window theme */
     qApp->setStyle(QStyleFactory::create("Fusion"));
