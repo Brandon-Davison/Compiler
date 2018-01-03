@@ -1,12 +1,11 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
-#include <QStyleFactory>
-#include <iostream>
-
 #include "codeeditor.h"
 #include "highlighter.h"
+
+#include <QMainWindow>
+#include <QStyleFactory>
 
 class QTextEdit;
 
@@ -25,10 +24,16 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    CodeEditor* codeEditor;
 
-    QTextEdit *edi;
+    CodeEditor *codeEditor;
     Highlighter *highlighter;
+
+    void setTheme();
+
+    void addWidgets();
+    void addCodeEditorWidget();
+    void addOutputWidgets();
+
 };
 
 #endif // MAINWINDOW_H
