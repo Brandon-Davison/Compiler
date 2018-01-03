@@ -9,6 +9,7 @@ int main(int argc, char *argv[])
     CodeEditor *editor = new CodeEditor();
 
     MainWindow w(editor);
+    w.setWindowTitle("Compiler");
     w.show();
 
     return a.exec();
