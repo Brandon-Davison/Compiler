@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 
 #include "codeeditor.h"
-#include "highlighter.h"
 
 #include <QMainWindow>
 #include <QStyleFactory>
@@ -26,7 +25,6 @@ private:
     Ui::MainWindow *ui;
 
     CodeEditor *codeEditor;
-    Highlighter *highlighter;
 
     void setTheme();
 

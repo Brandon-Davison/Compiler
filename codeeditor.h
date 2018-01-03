@@ -4,12 +4,17 @@
 #include <QPlainTextEdit>
 #include <QObject>
 
+#include <QSyntaxHighlighter>
+#include <QTextCharFormat>
+#include <QRegularExpression>
+
 class QPaintEvent;
 class QResizeEvent;
 class QSize;
 class QWidget;
 
 class LineNumberArea;
+class Highlighter;
 
 class CodeEditor : public QPlainTextEdit
 {
@@ -31,9 +36,10 @@ private slots:
 
 private:
     QWidget *lineNumberArea;
+    Highlighter *highlighter;
 };
 
-
+// One instance of class declared in CodeEditor
 class LineNumberArea : public QWidget
 {
 public:
@@ -52,6 +58,34 @@ protected:
 
 private:
     CodeEditor *codeEditor;
+};
+
+class QTextDocument;
+
+// one instance of class declared in CodeEdiotr
+class Highlighter : public QSyntaxHighlighter
+{
+    Q_OBJECT
+
+public:
+    Highlighter(QTextDocument *parent = 0);
+
+protected:
+    void highlightBlock(const QString &text) override;
+
+private:
+    struct HighlightingRule
+    {
+        QRegularExpression pattern;
+        QTextCharFormat format;
+    };
+    QVector<HighlightingRule> highlightingRules;
+
+    QRegularExpression commentStartExpression;
+    QRegularExpression commentEndExpression;
+
+    QTextCharFormat keywordFormat;
+    QTextCharFormat singleLineCommentFormat;
 };
 
 #endif // CODEEDITOR_H
