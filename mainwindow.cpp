@@ -51,7 +51,6 @@ void MainWindow::addCodeEditorWidget()
 {
     // create CodeEditor
     codeEditor = new CodeEditor();
-    highlighter = new Highlighter(codeEditor->document());
 
     // add code editor to window
     ui->verticalLayout->addWidget(codeEditor);
