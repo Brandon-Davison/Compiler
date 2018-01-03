@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QStyleFactory>
+#include <iostream>
 
 #include "codeeditor.h"
 #include "highlighter.h"

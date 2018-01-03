@@ -22,7 +22,32 @@ MainWindow::MainWindow(CodeEditor *codeEditor, QWidget *parent) :
 
     ui->verticalLayout->addWidget(window);
 
-    //setCentralWidget(a);
+    QTableWidget *memoryDump = static_cast<QTableWidget*>(ui->verticalLayout_2->itemAt(3)->widget());
+
+    /* Insert Columns */
+    for (int i = 0; i < 10; ++i)
+    {
+        memoryDump->insertColumn(i);
+    }
+
+    /* Insert rows */
+    for (int i = 0; i < 100; ++i)
+    {
+        // Create rows
+        memoryDump->insertRow(i);
+
+        // Change row numbers to 0, 10, 20, 30, etc.
+        memoryDump->setVerticalHeaderItem(i, new QTableWidgetItem(QString::number(i * 10)));
+    }
+
+    /* Add memory cell values */
+    for (int i = 0; i < 100; ++i)
+    {
+        for (int j = 0; j < 10; ++j)
+        {
+            memoryDump->setItem(i, j, new QTableWidgetItem(QString::number(0)));
+        }
+    }
 
     /* Dark window theme */
     qApp->setStyle(QStyleFactory::create("Fusion"));
@@ -44,7 +69,6 @@ MainWindow::MainWindow(CodeEditor *codeEditor, QWidget *parent) :
 
     qApp->setPalette(darkPalette);
     qApp->setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }");
-
 }
 
 MainWindow::~MainWindow()
