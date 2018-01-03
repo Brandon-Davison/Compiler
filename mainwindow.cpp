@@ -16,29 +16,28 @@ void MainWindow::setTheme()
 {
     // create window theme
     qApp->setStyle(QStyleFactory::create("Fusion"));
-    QPalette darkPalette;
+    QPalette palette;
 
     // base window color
-    darkPalette.setColor(QPalette::Window, QColor(53,53,53));
+    palette.setColor(QPalette::Window, QColor(53,53,53));
 
     // label text color
-    darkPalette.setColor(QPalette::WindowText, Qt::white);
+    palette.setColor(QPalette::WindowText, Qt::white);
 
     // base widget color
-    darkPalette.setColor(QPalette::Base, QColor(25,25,25));
+    palette.setColor(QPalette::Base, QColor(25,25,25));
 
     // text color in windows
-    darkPalette.setColor(QPalette::Text, Qt::white);
+    palette.setColor(QPalette::Text, Qt::white);
 
     // chart text background
-    darkPalette.setColor(QPalette::Button, QColor(53,53,53));
+    palette.setColor(QPalette::Button, QColor(53,53,53));
 
     // menu and chart text
-    darkPalette.setColor(QPalette::ButtonText, Qt::white);
+    palette.setColor(QPalette::ButtonText, Qt::white);
 
     // set window theme
-    qApp->setPalette(darkPalette);
-    qApp->setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }");
+    qApp->setPalette(palette);
 }
 
 void MainWindow::addWidgets()
