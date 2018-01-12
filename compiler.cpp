@@ -87,8 +87,8 @@ void Compiler::insertDataSymbol(const int &smlLineNumber, std::queue<std::string
 
 void Compiler::insertInputSymbol(const int & smlLineNumber, std::queue<std::string>& tokens)
 {
-}
 
+}
 
 void Compiler::insertSymbol(const int &symbol, const char &type, const int &location)
 {
