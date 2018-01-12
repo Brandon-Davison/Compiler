@@ -1,6 +1,6 @@
 Program takes a programming language called 'Simple', converts it to Simple Machine Language (SML), then executes it.
 
-[![Screenshot_10.png](https://s5.postimg.org/unl7asddz/Screenshot_10.png)](https://postimg.org/image/gtwulqksj/)
+[![Screenshot_10.png](https://s5.postimg.org/dlvl0ae87/Screenshot_10.png)](https://postimg.org/image/eo5ritx1f/)
 
 **SML**
 
