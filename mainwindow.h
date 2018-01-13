@@ -5,6 +5,8 @@
 
 #include <QMainWindow>
 #include <QStyleFactory>
+#include <QFileDialog>
+#include <QTextStream>
 
 class QTextEdit;
 
@@ -32,6 +34,8 @@ private:
     Ui::MainWindow *ui;
 
     CodeEditor *codeEditor;
+
+    QString fileTextPath;
 
     void setTheme();
 

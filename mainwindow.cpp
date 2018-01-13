@@ -92,7 +92,35 @@ void MainWindow::on_actionNewProject_triggered()
 
 }
 
+
 void MainWindow::on_actionOpen_triggered()
 {
+    QFileDialog dialog(this);
+    dialog.setFileMode(QFileDialog::AnyFile);
+    dialog.setNameFilter(tr("Files (*.txt)"));
+    dialog.setViewMode(QFileDialog::Detail);
 
+    QStringList fileNames;
+    if (dialog.exec())
+    {
+        fileNames = dialog.selectedFiles();
+    }
+
+    if (!fileNames.empty())
+    {
+        QFile inputFile(fileNames.at(0));
+        QString text;
+        if (inputFile.open(QIODevice::ReadOnly))
+        {
+            QTextStream in(&inputFile);
+
+            while (!in.atEnd())
+            {
+                text += in.readLine() + '\n';
+            }
+            inputFile.close();
+        }
+        codeEditor->document()->setPlainText(text);
+        fileTextPath = fileNames.at(0);
+    }
 }
