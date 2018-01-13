@@ -92,16 +92,6 @@ void MainWindow::on_actionNewProject_triggered()
 
 }
 
-void MainWindow::on_actionRedo_triggered()
-{
-
-}
-
-void MainWindow::on_actionUndo_triggered()
-{
-
-}
-
 void MainWindow::on_actionOpen_triggered()
 {
 
