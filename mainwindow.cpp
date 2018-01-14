@@ -81,3 +81,81 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::on_actionRun_triggered()
+{
+
+}
+
+void MainWindow::on_actionNewProject_triggered()
+{
+    on_actionOpen_triggered();
+}
+
+void MainWindow::on_actionOpen_triggered()
+{
+    QFileDialog dialog(this);
+    dialog.setFileMode(QFileDialog::AnyFile);
+    dialog.setNameFilter(tr("Files (*.txt)"));
+    dialog.setViewMode(QFileDialog::Detail);
+
+    QStringList fileNames;
+    if (dialog.exec())
+    {
+        fileNames = dialog.selectedFiles();
+    }
+
+    if (!fileNames.empty())
+    {
+        filePath = fileNames[0];
+        readFileIntoCodeEditor();
+    }
+}
+
+void MainWindow::on_actionSave_Project_triggered()
+{
+    QMessageBox::StandardButton reply;
+
+    reply = QMessageBox::question(this, "Save", "Do you want to save your changes?",
+        QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+
+    if (reply == QMessageBox::Save)
+    {
+        readCodeEditorIntoFile();
+    }
+    if (reply == QMessageBox::Discard)
+    {
+        readFileIntoCodeEditor();
+    }
+}
+
+void MainWindow::readFileIntoCodeEditor()
+{
+    QFile inputFile(filePath);
+    QString text;
+
+    if (inputFile.open(QIODevice::ReadOnly))
+    {
+        QTextStream in(&inputFile);
+
+        while (!in.atEnd())
+        {
+            text += in.readLine() + '\n';
+        }
+        inputFile.close();
+        codeEditor->document()->setPlainText(text);
+    }
+}
+
+void MainWindow::readCodeEditorIntoFile()
+{
+    QFile file(filePath);
+
+    if (file.open(QIODevice::ReadWrite | QIODevice::Text))
+    {
+        QTextStream out(&file);
+
+        out << codeEditor->document()->toPlainText();
+    }
+    file.close();
+}
