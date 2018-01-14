@@ -89,9 +89,8 @@ void MainWindow::on_actionRun_triggered()
 
 void MainWindow::on_actionNewProject_triggered()
 {
-
+    on_actionOpen_triggered();
 }
-
 
 void MainWindow::on_actionOpen_triggered()
 {
@@ -108,19 +107,55 @@ void MainWindow::on_actionOpen_triggered()
 
     if (!fileNames.empty())
     {
-        QFile inputFile(fileNames.at(0));
-        QString text;
-        if (inputFile.open(QIODevice::ReadOnly))
-        {
-            QTextStream in(&inputFile);
-
-            while (!in.atEnd())
-            {
-                text += in.readLine() + '\n';
-            }
-            inputFile.close();
-        }
-        codeEditor->document()->setPlainText(text);
-        fileTextPath = fileNames.at(0);
+        filePath = fileNames[0];
+        readFileIntoCodeEditor();
     }
+}
+
+void MainWindow::on_actionSave_Project_triggered()
+{
+    QMessageBox::StandardButton reply;
+
+    reply = QMessageBox::question(this, "Save", "Do you want to save your changes?",
+        QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+
+    if (reply == QMessageBox::Save)
+    {
+        readCodeEditorIntoFile();
+    }
+    if (reply == QMessageBox::Discard)
+    {
+        readFileIntoCodeEditor();
+    }
+}
+
+void MainWindow::readFileIntoCodeEditor()
+{
+    QFile inputFile(filePath);
+    QString text;
+
+    if (inputFile.open(QIODevice::ReadOnly))
+    {
+        QTextStream in(&inputFile);
+
+        while (!in.atEnd())
+        {
+            text += in.readLine() + '\n';
+        }
+        inputFile.close();
+        codeEditor->document()->setPlainText(text);
+    }
+}
+
+void MainWindow::readCodeEditorIntoFile()
+{
+    QFile file(filePath);
+
+    if (file.open(QIODevice::ReadWrite | QIODevice::Text))
+    {
+        QTextStream out(&file);
+
+        out << codeEditor->document()->toPlainText();
+    }
+    file.close();
 }

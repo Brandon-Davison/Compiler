@@ -3,5 +3,6 @@
         <file>run.jpg</file>
         <file>new_file_icon.png</file>
         <file>open_file_icon.jpg</file>
+        <file>save_file_icon.png</file>
     </qresource>
 </RCC>

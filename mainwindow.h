@@ -7,6 +7,8 @@
 #include <QStyleFactory>
 #include <QFileDialog>
 #include <QTextStream>
+#include <QMessageBox>
+#include <QIODevice>
 
 class QTextEdit;
 
@@ -30,12 +32,18 @@ private slots:
 
     void on_actionOpen_triggered();
 
+    void on_actionSave_Project_triggered();
+
 private:
     Ui::MainWindow *ui;
 
     CodeEditor *codeEditor;
 
-    QString fileTextPath;
+    QString filePath;
+
+    void readFileIntoCodeEditor();
+
+    void readCodeEditorIntoFile();
 
     void setTheme();
 

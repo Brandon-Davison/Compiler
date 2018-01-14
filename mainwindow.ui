@@ -112,7 +112,7 @@ p, li { white-space: pre-wrap; }
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>20</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -122,6 +122,8 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionNewProject"/>
     <addaction name="actionOpen"/>
     <addaction name="separator"/>
+    <addaction name="separator"/>
+    <addaction name="actionSave_Project"/>
    </widget>
    <widget class="QMenu" name="menuBuild">
     <property name="title">
@@ -145,39 +147,59 @@ p, li { white-space: pre-wrap; }
    </attribute>
    <addaction name="actionNewProject"/>
    <addaction name="actionOpen"/>
+   <addaction name="actionSave_Project"/>
    <addaction name="actionRun"/>
   </widget>
   <action name="actionOpen">
    <property name="icon">
-    <iconset resource="res.qrc">
+    <iconset>
      <normaloff>:/Images/open_file_icon.jpg</normaloff>:/Images/open_file_icon.jpg</iconset>
    </property>
    <property name="text">
     <string>Open Project</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
   </action>
   <action name="actionRun">
    <property name="icon">
-    <iconset resource="res.qrc">
+    <iconset>
      <normaloff>:/Images/run.jpg</normaloff>:/Images/run.jpg</iconset>
    </property>
    <property name="text">
     <string>Run</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
+   </property>
   </action>
   <action name="actionNewProject">
    <property name="icon">
-    <iconset resource="res.qrc">
+    <iconset>
      <normaloff>:/Images/new_file_icon.png</normaloff>:/Images/new_file_icon.png</iconset>
    </property>
    <property name="text">
     <string>New Project</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionSave_Project">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Images/save_file_icon.png</normaloff>:/Images/save_file_icon.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save Project</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources>
-  <include location="res.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
